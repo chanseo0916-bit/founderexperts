@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전문가 상세 프로필 | 우리는 창업하는 사이다</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .profile-detail-page {
+            padding: 6rem 0;
+            min-height: 100vh;
+        }
+
+        .profile-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 5rem;
+        }
+
+        .profile-sidebar {
+            position: sticky;
+            top: 6rem;
+            height: fit-content;
+        }
+
+        .profile-image-large {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.05) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-image-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        /* 이채경 노무사 전용 이미지 편집 */
+        .profile-image-large.chae-image img {
+            width: 130%;
+            height: 130%;
+            object-fit: contain;
+            object-position: bottom center;
+            transform: translateY(5%);
+        }
+
+        .profile-main h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .profile-tag-large {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(0, 130, 72, 0.15);
+            color: var(--primary);
+            border: 1px solid rgba(0, 130, 72, 0.3);
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-headline-large {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            margin-bottom: 3.5rem;
+            line-height: 1.4;
+        }
+
+        .about-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2.5rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 5rem;
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .info-list li {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .info-list li span.dot {
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin-top: 0.6rem;
+            flex-shrink: 0;
+        }
+
+        /* Portfolio / Projects Styling */
+        .project-card {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card:last-child {
+            border-bottom: none;
+        }
+
+        .project-category {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-desc {
+            font-size: 1.05rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .case-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .case-item {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding-left: 1rem;
+            border-left: 2px solid rgba(0, 130, 72, 0.2);
+            transition: border-color 0.3s;
+        }
+
+        .case-item:hover {
+            border-left-color: var(--primary);
+        }
+
+        .case-icon {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 0.1rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            margin-bottom: 3rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .profile-sidebar {
+                position: static;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .profile-main h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-canvas">
+        <div class="orb-container">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+    </div>
+
+    <!-- [1] Navigation (Common) -->
+    <nav>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html" class="logo-link">
+                <div class="logo">
+                    <div class="stars-container" style="margin-bottom: 0; gap: 2px;">
+                        <span class="star" style="font-size: 0.8rem;">★</span>
+                    </div>
+                    <span class="brand-text">우.창.<span class="highlight">사</span></span>
+                    <div class="fizz-container">
+                        <span class="fizz"></span><span class="fizz"></span><span class="fizz"></span>
+                    </div>
+                </div>
+            </a>
+            <div class="menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links">
+                <a href="about.html">About Us</a>
+                <a href="strengths.html">핵심 강점</a>
+                <a href="process.html">진행 방식</a>
+                <a href="index.html#experts" class="nav-link-btn">전문가 라인업</a>
+            </div>
+            <a href="#" onclick="openApplicationModal(); return false;" class="btn btn-primary"
+                style="padding: 0.6rem 1.4rem; font-size: 0.85rem; border-radius: 10px;">지금 참여하기</a>
+        </div>
+    </nav>
+
+    <div class="container profile-detail-page" style="margin-top: 2rem;">
+        <a href="index.html#experts" class="back-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            전문가 리스트로 돌아가기
+        </a>
+
+        <div id="profile-content" class="profile-container">
+            <!-- Content will be populated by JS -->
+            <div style="grid-column: 1 / -1; text-align: center; padding: 4rem;">
+                <p>전문가 프로필을 불러오는 중입니다...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const expertData = {
+            'lee-seong-ho': {
+                name: '이성호 회계사',
+                tag: 'Finance & Tax Strategy',
+                headline: '“기술과 숫자를 잇는 실전적 솔루션”',
+                about: 'PwC 삼일, EY 한영 등 대형 회계법인과 SK하이닉스에서의 실무 경험을 바탕으로, 단순한 수치를 넘어 비즈니스의 지속 가능한 성장을 위한 재무 전략을 제시합니다.',
+                image: './images/expert_lee.png',
+                education: [
+                    '고려대학교 졸업',
+                    '2020년 한국공인회계사 시험 합격'
+                ],
+                career: [
+                    'Partner @ 회계법인 마일스톤',
+                    'Frm. PwC 삼일회계법인 / EY 한영회계법인',
+                    'Frm. SK하이닉스'
+                ],
+                expertise: [
+                    {
+                        category: '회계감사 및 내부회계 (Audit & Control)',
+                        desc: '글로벌 엔터프라이즈부터 초기 스타트업까지 리스크 관리 체계를 구축합니다.',
+                        cases: [
+                            'SK하이닉스, 포스코건설 등 시가총액 상위 기업 회계감사 수행',
+                            '삼성전자 등 주요 대기업 내부회계관리제도 설계 및 평가 지원',
+                            '반도체/IT 제조사 횡령 관련 디지털 포렌식 조사 및 보고서 작성'
+                        ]
+                    },
+                    {
+                        category: '재무 전략 및 밸류에이션 (Finance Strategy)',
+                        desc: '기업의 진정한 가치를 발견하고 성장을 위한 숫자의 근거를 만듭니다.',
+                        cases: [
+                            '글로벌 암호화폐 거래소 운영사 재무실사 및 세무 구조 최적화',
+                            '인터넷 서비스 기업 간 합병비율 산정을 위한 주식 가치 평가',
+                            '반도체 제조사 ESG 보고서 작성 및 비재무적 가치 측정 자문'
+                        ]
+                    }
+                ]
+            },
+            'park-gyu-min': {
+                name: '박규민 변리사',
+                tag: 'Patent & AI Strategy',
+                headline: '“기술의 탄생부터 비즈니스 전략까지 함께 설계하는 IP 파트너”',
+                about: '복잡한 인공지능과 기계 기술을 법률적 언어로 치환하여 기업의 강력한 무기로 만듭니다. 기술 트렌드에 대한 깊은 이해를 바탕으로 실질적인 기술 보호 전략을 제공합니다.',
+                image: './images/박규민 변리사님 최종.jpg',
+                education: [
+                    '연세대학교 공과대학 학사 졸업',
+                    '고려사이버대학교 AI·데이터과학부 재학'
+                ],
+                career: [
+                    '대인국제특허법률사무소 대표 변리사',
+                    '한빛지적재산권센터 특허법 전임 강사',
+                    '스타트업 지식재산(IP) 빌드업 및 전략 자문'
+                ],
+                expertise: [
+                    {
+                        category: 'AI 및 딥테크 IP 포트폴리오 (Tech IP)',
+                        desc: '보이지 않는 기술과 알고리즘을 독점적인 권리로 확보합니다.',
+                        cases: [
+                            'AI 기반 플랫폼 및 데이터 시스템 글로벌 IP 포트폴리오 구축',
+                            '기계·기구·제조업 분야 특허 출원 및 핵심 기술 보호 전략 수립',
+                            '대형 철강사 국내외 특허 출원 및 무효심판 수행'
+                        ]
+                    },
+                    {
+                        category: '브랜딩 및 커머스 보호 (Brand Protection)',
+                        desc: '시장에서의 경쟁 우위를 지키기 위한 입체적인 상표/디자인 전략을 제시합니다.',
+                        cases: [
+                            '유명 크리에이터 브랜딩 및 F&B 프랜차이즈 글로벌 상표 자문',
+                            '주요 패션 브랜드 상표 분쟁 자문 및 침해 방지(FTO) 전략',
+                            '대형 가전 브랜드 디자인권 보호 및 유사 제품 대응 전략'
+                        ]
+                    }
+                ]
+            },
+            'lee-jeong-won': {
+                name: '이정원 변호사',
+                tag: 'Corporate & IP Strategy',
+                headline: '“기업 성장의 법률 파트너”',
+                about: '사내 법무팀과 로펌에서의 경험을 두루 갖춘 변호사로서, 기업의 브랜드 가치 제고를 위한 상표 전략부터 리스크 관리를 위한 기업 법무까지 비즈니스의 모든 단계에서 실질적인 해법을 제시합니다.',
+                image: './images/이정원 변호사.png',
+                education: [
+                    '카이스트 지식재산전문대학원(MIP) 석사',
+                    '경희대학교 법학전문대학원 석사',
+                    '경희대학교 법학 학사'
+                ],
+                career: [
+                    '블루법률사무소 대표 변호사',
+                    'CSIP컨설팅 (2022-현재)',
+                    '연합뉴스 경제TV [경제매거진] 개인회생편 출연 (2025)',
+                    '특허법인 C&S (2021-2022)',
+                    '㈜락앤락 법무팀 사내변호사 (2019-2021)',
+                    '법률사무소 승민 (2018-2019)'
+                ],
+                expertise: [
+                    {
+                        category: '기업 법무 및 컴플라이언스',
+                        desc: '기업 내부 실무 경험을 바탕으로 법적 리스크를 사전에 관리합니다.',
+                        cases: [
+                            '대형 생활용품 제조사 사내 법무팀 계약 검토 및 해외 소송 관리',
+                            '글로벌 타이어 브랜드 저작권 관리 및 임직원 IP 교육',
+                            '건강기능식품 기업 제품 출시 관련 규제 검토 및 자문'
+                        ]
+                    },
+                    {
+                        category: '브랜드 IP 전략 및 상표 관리',
+                        desc: '체계적인 관리로 브랜드의 유무형 가치를 극대화합니다.',
+                        cases: [
+                            '국내 대형 철강기업 글로벌 상표 포트폴리오 구축 및 관리',
+                            '글로벌 자동차 브랜드 보호를 위한 상표 및 저작권 자문',
+                            '신규 고관여 브랜드 네이밍 및 상표권 확보 전략 수립'
+                        ]
+                    },
+                    {
+                        category: '지식재산권 분쟁 해결',
+                        desc: '분쟁 시 기업의 이익을 최우선으로 보호하며 합리적인 조력을 제공합니다.',
+                        cases: [
+                            '반도체 부품 제조사 산업재산권 관련 자문 및 소송 수행',
+                            '생활용품 특허 및 디자인 침해 소송 등 다수의 IP 분쟁 대응'
+                        ]
+                    }
+                ]
+            },
+            'lee-chae-gyeong': {
+                name: '이채경 노무사',
+                tag: 'HR & Labor Strategy',
+                headline: '“경영의 관점에서 노무를 봅니다”',
+                about: '단순한 법률 해석을 넘어 기업의 경영 전략과 조화를 이루는 인사 노무 솔루션을 제공합니다. 스타트업부터 제조 기반 기업까지, 실무적 관점에서 기업의 리스크를 관리하고 조직의 성장을 돕습니다.',
+                image: './images/이채경 노무사 배경없음.png',
+                education: [
+                    '제 29회 공인노무사 합격',
+                    '단국대학교 경영학 전공'
+                ],
+                career: [
+                    '채우리노동법률사무소 대표 공인노무사',
+                    '노무법인 반석 공인노무사',
+                    '최수영노동법률사무소 공인노무사',
+                    'Hackers 인사·노무관리 및 경영조직론 전임 강사'
+                ],
+                expertise: [
+                    {
+                        category: '인사노무 체계 구축 (HR System)',
+                        desc: '스타트업과 성장기 기업의 지속 가능한 성장을 위한 인사 기틀을 마련합니다.',
+                        cases: [
+                            '스타트업·성장기 기업 맞춤형 인사노무 체계 구축 컨설팅',
+                            '기술·제조 기반 기업 인사노무 자문 및 급여 아웃소싱',
+                            '유연근무제 및 성과급 제도 설계 자문'
+                        ]
+                    },
+                    {
+                        category: '분쟁 대응 및 리스크 관리 (Labor Risk)',
+                        desc: '노동 분쟁을 효율적으로 대응하고 잠재적인 법적 리스크를 사전에 차단합니다.',
+                        cases: [
+                            '노동위원회 부당해고 등 구제신청 사건 대리',
+                            '기업 인사노무 법률 리스크 진단 및 사전 방어 전략 수립',
+                            '고용노동부 근로감독 대응 및 컴플라이언스 교육'
+                        ]
+                    }
+                ]
+            }
+        };
+
+        function renderProfile() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id') || 'lee-jeong-won'; // Default for testing or if missing
+            const data = expertData[id];
+            const container = document.getElementById('profile-content');
+
+            if (!data) {
+                container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 4rem;"><h1>전문가를 찾을 수 없습니다.</h1><a href="index.html" class="btn btn-primary" style="margin-top: 2rem;">홈으로 돌아가기</a></div>';
+                return;
+            }
+
+            container.innerHTML = `
+                <aside class="profile-sidebar">
+                    <div class="profile-image-large ${id === 'lee-chae-gyeong' ? 'chae-image' : ''}">
+                        <img src="${data.image}" alt="${data.name}">
+                    </div>
+                </aside>
+                
+                <main class="profile-main">
+                    <span class="profile-tag-large">${data.tag}</span>
+                    <h1>${data.name}</h1>
+                    <p class="profile-headline-large">${data.headline}</p>
+                    
+                    ${data.about ? `
+                    <div class="about-section">
+                        <p class="about-text">${data.about}</p>
+                    </div>
+                    ` : ''}
+
+                    <div class="info-grid">
+                        <div class="info-column">
+                            <h3 class="section-title">경력 사항</h3>
+                            <ul class="info-list">
+                                ${data.career.map(item => `<li><span class="dot"></span>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="info-column">
+                            <h3 class="section-title">학력 사항</h3>
+                            <ul class="info-list">
+                                ${data.education.map(item => `<li><span class="dot"></span>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="expertise-section">
+                        <h3 class="section-title" style="margin-bottom: 3rem; font-size: 1.6rem;">주요 성과 및 전문 분야</h3>
+                        <div class="projects-container">
+                            ${data.expertise.map(exp => `
+                                <div class="project-card">
+                                    <h4 class="project-category">${exp.category}</h4>
+                                    <p class="project-desc">${exp.desc}</p>
+                                    <ul class="case-list">
+                                        ${exp.cases.map(caseItem => `
+                                            <li class="case-item">
+                                                <span class="case-icon">
+                                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                                    </svg>
+                                                </span>
+                                                ${caseItem}
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        window.onload = renderProfile;
+    </script>
+
+    <!-- Application Modal (Unified) -->
+    <div id="application-modal" class="modal-overlay" onclick="if(event.target === this) closeApplicationModal()">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="closeApplicationModal()">&times;</button>
+            <div class="form-container">
+                <div class="section-header modal-header-compact">
+                    <span class="badge"
+                        style="background: var(--glow-green); color: var(--primary); margin-bottom: 0.5rem;">네트워킹
+                        밋업</span>
+                    <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">스타트업 전문가들과 함께하는<br>네트워크 밋업</h2>
+                    <div class="timer-container" style="margin-bottom: 0.5rem;">
+                        <p style="font-size: 0.9rem;">🔥 오늘 혜택 마감까지</p>
+                        <div id="countdown" class="countdown-timer">
+                            <div class="time-unit"><span id="hours">00</span><label>시간</label></div><span
+                                class="sep">:</span>
+                            <div class="time-unit"><span id="minutes">00</span><label>분</label></div><span
+                                class="sep">:</span>
+                            <div class="time-unit"><span id="seconds">00</span><label>초</label></div>
+                        </div>
+                    </div>
+                    <div class="status-badge-group" style="margin: 0.5rem 0;">
+                        <div class="status-badge-item urgent"><span class="pulse-dot"></span>선착순 마감 직전</div>
+                        <div class="status-badge-item warning"><span class="pulse-dot"></span>조기 마감 임박</div>
+                    </div>
+                </div>
+
+                <div class="custom-form-container">
+                    <form id="ciderForm" class="cider-premium-form">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="name">이름</label>
+                                <input type="text" id="name" name="name" placeholder="성함을 입력해 주세요" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="age">나이</label>
+                                <input type="number" id="age" name="age" placeholder="만 나이를 입력해 주세요" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">연락처</label>
+                            <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+                        </div>
+                        <div class="input-group">
+                            <label>창업현황</label>
+                            <div class="radio-group-vertical">
+                                <label class="radio-option"><input type="radio" name="status" value="예비 창업가"
+                                        required><span class="custom-radio"></span><span class="radio-label">예비
+                                        창업가</span></label>
+                                <label class="radio-option"><input type="radio" name="status" value="초기 창업가"><span
+                                        class="custom-radio"></span><span class="radio-label">초기 창업가</span></label>
+                                <label class="radio-option"><input type="radio" name="status" value="n년차 창업가"><span
+                                        class="custom-radio"></span><span class="radio-label">n년차 창업가</span></label>
+                                <label class="radio-option">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; width: 100%;">
+                                        <input type="radio" name="status" value="기타"><span
+                                            class="custom-radio"></span><span class="radio-label">기타: </span>
+                                        <input type="text" name="statusEtc" class="inline-input" placeholder="직접 입력">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="field">창업 분야</label>
+                            <input type="text" id="field" name="field" placeholder="관심 있거나 진행 중인 창업 분야" required>
+                        </div>
+                        <div class="input-group">
+                            <label>매출여부</label>
+                            <div class="radio-group-vertical">
+                                <label class="radio-option"><input type="radio" name="revenue" value="네"><span
+                                        class="custom-radio"></span><span class="radio-label">네</span></label>
+                                <label class="radio-option"><input type="radio" name="revenue" value="아니요"><span
+                                        class="custom-radio"></span><span class="radio-label">아니요</span></label>
+                                <label class="radio-option">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; width: 100%;">
+                                        <input type="radio" name="revenue" value="기타"><span
+                                            class="custom-radio"></span><span class="radio-label">기타: </span>
+                                        <input type="text" name="revenueEtc" class="inline-input" placeholder="직접 입력">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="coffeeChat">참여 행사 일자 선택</label>
+                            <input type="datetime-local" id="coffeeChat" name="coffeeChat" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="problem">현재 가장 답답한 고민</label>
+                            <textarea id="problem" name="problem" placeholder="가장 시원하게 해결하고 싶은 부분을 구체적으로 적어주세요"
+                                required></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="btn btn-primary submit-btn">
+                            <span class="btn-text">참여 신청하기</span>
+                            <div class="loader" style="display: none;"></div>
+                        </button>
+                    </form>
+                    <div id="successMessage" class="success-box" style="display: none;">
+                        <div class="success-icon">🥤</div>
+                        <h3>신청 완료!</h3>
+                        <p>운영진이 곧 연락드리겠습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

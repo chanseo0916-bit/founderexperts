@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>핵심 강점 | 우창사</title>
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="bg-canvas">
+        <div class="orb-container">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+    </div>
+
+    <!-- 실시간 알림 팝업 -->
+    <div id="notification-toast" class="notification-toast">
+        <div class="toast-content">
+            <span class="toast-icon">🥤</span>
+            <div class="toast-text">
+                <p id="toast-user">서울시 강남구 이*서님</p>
+                <span>방금 전 참여 신청 완료!</span>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html" class="logo-link">
+                <div class="logo">
+                    <div class="stars-container" style="margin-bottom: 0; gap: 2px;">
+                        <span class="star" style="font-size: 0.8rem;">★</span>
+                    </div>
+                    <span class="brand-text">우.창.<span class="highlight">사</span></span>
+                    <div class="fizz-container">
+                        <span class="fizz"></span><span class="fizz"></span><span class="fizz"></span>
+                    </div>
+                </div>
+            </a>
+            <div class="menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links">
+                <a href="about.html">About Us</a>
+                <a href="strengths.html" class="active">핵심 강점</a>
+                <a href="process.html">진행 방식</a>
+                <a href="index.html#experts" class="nav-link-btn">전문가 라인업</a>
+            </div>
+            <a href="#" onclick="openApplicationModal(); return false;" class="btn btn-primary"
+                style="padding: 0.6rem 1.4rem; font-size: 0.85rem; border-radius: 10px;">지금 참여하기</a>
+        </div>
+    </nav>
+
+    <header class="sub-page-hero">
+        <div class="container">
+            <span class="badge"
+                style="background: rgba(173, 255, 47, 0.1); color: #adff2f; margin-bottom: 2rem;">Strategy Pillar</span>
+            <h1>사업계획서의<br><span class="highlight-neon">4대 핵심 로직</span></h1>
+        </div>
+    </header>
+
+    <main class="content-body">
+        <section class="logic-section">
+            <div class="container">
+                <div class="logic-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div class="logic-item">
+                        <div class="logic-icon">💰</div>
+                        <h4>재무 및 자금 전략</h4>
+                        <p>단순한 수치가 아닌, 투자자와 심사역이 신뢰할 수 있는 실무적 추정 재무제표와 자금 조달 로드맵을 설계합니다.</p>
+                    </div>
+                    <div class="logic-item">
+                        <div class="logic-icon">🛡️</div>
+                        <h4>지식재산(IP) 경영</h4>
+                        <p>기술의 권리화를 넘어, 사업의 진입장벽을 구축하고 기업 가치를 증명하는 전략적 특허 포트폴리오를 제안합니다.</p>
+                    </div>
+                    <div class="logic-item">
+                        <div class="logic-icon">⚖️</div>
+                        <h4>법률 및 리스크 관리</h4>
+                        <p>창업 초기 발생할 수 있는 주주 간 분쟁, 계약 리스크를 예방하고 견고한 거버넌스를 구축하는 법률 가이드를 제공합니다.</p>
+                    </div>
+                    <div class="logic-item">
+                        <div class="logic-icon">👥</div>
+                        <h4>조직 및 인사 설계</h4>
+                        <p>팀 빌딩부터 스케일업 단계의 노무 리스크 관리까지, 지속 가능한 성장을 위한 조직 운영 로직을 전수합니다.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 6rem; text-align: center;">
+                    <h2 style="font-size: 2.2rem; margin-bottom: 3rem;">"전문가의 언어로 당신의 아이템을 재해석하세요"</h2>
+                    <a href="#" onclick="openApplicationModal(); return false;" class="btn btn-primary"
+                        style="padding: 1.2rem 3rem; font-size: 1.1rem; border-radius: 15px;">전략 설계 강연 신청하기</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 4rem 0; background: rgba(0,0,0,0.2);">
+        <div class="container" style="text-align: center;">
+            <p style="opacity: 0.6;">&copy; 2026 우리는 창업하는 사이다. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Application Modal -->
+    <div id="application-modal" class="modal-overlay" onclick="if(event.target === this) closeApplicationModal()">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="closeApplicationModal()">&times;</button>
+            <div class="form-container">
+                <div class="section-header modal-header-compact">
+                    <span class="badge"
+                        style="background: var(--glow-green); color: var(--primary); margin-bottom: 0.5rem;">네트워킹
+                        밋업</span>
+                    <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">스타트업 전문가들과 함께하는<br>네트워크 밋업</h2>
+                    <div class="timer-container" style="margin-bottom: 0.5rem;">
+                        <p style="font-size: 0.9rem;">🔥 오늘 혜택 마감까지</p>
+                        <div id="countdown" class="countdown-timer">
+                            <div class="time-unit"><span id="hours">00</span><label>시간</label></div><span
+                                class="sep">:</span>
+                            <div class="time-unit"><span id="minutes">00</span><label>분</label></div><span
+                                class="sep">:</span>
+                            <div class="time-unit"><span id="seconds">00</span><label>초</label></div>
+                        </div>
+                    </div>
+                    <div class="status-badge-group" style="margin: 0.5rem 0;">
+                        <div class="status-badge-item urgent"><span class="pulse-dot"></span>선착순 마감 직전</div>
+                        <div class="status-badge-item warning"><span class="pulse-dot"></span>조기 마감 임박</div>
+                    </div>
+                </div>
+
+                <div class="custom-form-container">
+                    <form id="ciderForm" class="cider-premium-form">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="name">이름</label>
+                                <input type="text" id="name" name="name" placeholder="성함을 입력해 주세요" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="age">나이</label>
+                                <input type="number" id="age" name="age" placeholder="만 나이를 입력해 주세요" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">연락처</label>
+                            <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+                        </div>
+                        <div class="input-group">
+                            <label>창업현황</label>
+                            <div class="radio-group-vertical">
+                                <label class="radio-option"><input type="radio" name="status" value="예비 창업가"
+                                        required><span class="custom-radio"></span><span class="radio-label">예비
+                                        창업가</span></label>
+                                <label class="radio-option"><input type="radio" name="status" value="초기 창업가"><span
+                                        class="custom-radio"></span><span class="radio-label">초기 창업가</span></label>
+                                <label class="radio-option"><input type="radio" name="status" value="n년차 창업가"><span
+                                        class="custom-radio"></span><span class="radio-label">n년차 창업가</span></label>
+                                <label class="radio-option">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; width: 100%;">
+                                        <input type="radio" name="status" value="기타"><span
+                                            class="custom-radio"></span><span class="radio-label">기타: </span>
+                                        <input type="text" name="statusEtc" class="inline-input" placeholder="직접 입력">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="field">창업 분야</label>
+                            <input type="text" id="field" name="field" placeholder="관심 있거나 진행 중인 창업 분야" required>
+                        </div>
+                        <div class="input-group">
+                            <label>매출여부</label>
+                            <div class="radio-group-vertical">
+                                <label class="radio-option"><input type="radio" name="revenue" value="네"><span
+                                        class="custom-radio"></span><span class="radio-label">네</span></label>
+                                <label class="radio-option"><input type="radio" name="revenue" value="아니요"><span
+                                        class="custom-radio"></span><span class="radio-label">아니요</span></label>
+                                <label class="radio-option">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; width: 100%;">
+                                        <input type="radio" name="revenue" value="기타"><span
+                                            class="custom-radio"></span><span class="radio-label">기타: </span>
+                                        <input type="text" name="revenueEtc" class="inline-input" placeholder="직접 입력">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="coffeeChat">참여 행사 일자 선택</label>
+                            <input type="datetime-local" id="coffeeChat" name="coffeeChat" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="problem">현재 가장 답답한 고민</label>
+                            <textarea id="problem" name="problem" placeholder="가장 시원하게 해결하고 싶은 부분을 구체적으로 적어주세요"
+                                required></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="btn btn-primary submit-btn">
+                            <span class="btn-text">참여 신청하기</span>
+                            <div class="loader" style="display: none;"></div>
+                        </button>
+                    </form>
+                    <div id="successMessage" class="success-box" style="display: none;">
+                        <div class="success-icon">🥤</div>
+                        <h3>신청 완료!</h3>
+                        <p>운영진이 곧 연락드리겠습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
