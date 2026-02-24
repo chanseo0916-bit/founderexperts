@@ -1,3 +1,26 @@
+// Global Image Error Handler: GitHub 환경에 따른 경로 문제( images/ 폴더 유무) 자동 해결
+document.addEventListener('error', function (e) {
+  if (e.target.tagName.toLowerCase() === 'img') {
+    const currentSrc = e.target.getAttribute('src');
+    if (!currentSrc || e.target.dataset.triedFallback === 'true') return;
+
+    let fallbackSrc = '';
+    if (currentSrc.startsWith('images/')) {
+      // images/ 경로에서 실패 시 루트에서 찾음
+      fallbackSrc = currentSrc.replace('images/', '');
+    } else if (!currentSrc.includes('://') && !currentSrc.startsWith('/')) {
+      // 루트에서 실패 시 images/ 폴더 안에서 찾음
+      fallbackSrc = 'images/' + currentSrc;
+    }
+
+    if (fallbackSrc) {
+      e.target.dataset.triedFallback = 'true';
+      e.target.src = fallbackSrc;
+      console.log(`Image load failed: ${currentSrc} -> trying ${fallbackSrc}`);
+    }
+  }
+}, true);
+
 const scriptURL =
   "https://script.google.com/macros/s/AKfycbxmRbzmGlOZKqqihEko-OlZsckaewvrb-Bb3KQIlRzG8hgoMtDyIUv8dxkuQ2I5IQ/exec";
 
