@@ -1,0 +1,238 @@
+
+
+
+
+<!-- Application Modal -->
+    <div id="application-modal" class="modal-overlay" onclick="if(event.target === this) closeApplicationModal()">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="closeApplicationModal()">&times;</button>
+            <div class="form-container">
+                <div class="section-header">
+                    <span class="badge" style="background: var(--glow-green); color: var(--primary);">?§Ìä∏?åÌÇπ Î∞ãÏóÖ</span>
+                    <h2>?§Ì??∏ÏóÖ ?ÑÎ¨∏Í∞Ä?§Í≥º ?®Íªò?òÎäî<br>?§Ìä∏?åÌÅ¨ Î∞ãÏóÖ</h2>
+                    <div class="timer-container">
+                        <p>?î• ?§Îäò ?úÌÉù ÎßàÍ∞êÍπåÏ?</p>
+                        <div id="countdown" class="countdown-timer">
+                            <div class="time-unit"><span id="hours">00</span><label>?úÍ∞Ñ</label></div><span
+                                class="sep">:</span>
+                            <div class="time-unit"><span id="minutes">00</span><label>Î∂?/label></div><span
+                                class="sep">:</span>
+                            <div class="time-unit"><span id="seconds">00</span><label>Ï¥?/label></div>
+                        </div>
+                    </div>
+                    <div class="status-badge-group">
+                        <div class="status-badge-item urgent"><span class="pulse-dot"></span>?†Ï∞©??ÎßàÍ∞ê ÏßÅÏ†Ñ</div>
+                        <div class="status-badge-item warning"><span class="pulse-dot"></span>Ï°∞Í∏∞ ÎßàÍ∞ê ?ÑÎ∞ï</div>
+                    </div>
+                    <p style="margin-top: 1rem;">Í∞ÑÎã®???ïÎ≥¥Îß??®Í≤®Ï£ºÏãúÎ©? ?¥ÏòÅÏßÑÏù¥ ?úÏõê??Ï∞∏Ïó¨ ?àÎÇ¥Î•??ÑÏ??úÎ¶Ω?àÎã§.</p>
+                </div>
+
+                <div class="custom-form-container">
+                    <form id="ciderForm" class="cider-premium-form">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="name">?¥Î¶Ñ</label>
+                                <input type="text" id="name" name="name" placeholder="?±Ìï®???ÖÎ†•??Ï£ºÏÑ∏?? required>
+                            </div>
+                            <div class="input-group">
+                                <label for="age">?òÏù¥</label>
+                                <input type="number" id="age" name="age" placeholder="Îß??òÏù¥Î•??ÖÎ†•??Ï£ºÏÑ∏?? required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">?∞ÎùΩÏ≤?(?ÑÌôîÎ≤àÌò∏)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Ï∞ΩÏóÖ ?ÑÌô©</label>
+                            <div class="radio-group-vertical">
+                                <label class="radio-option"><input type="radio" name="status" value="?àÎπÑ Ï∞ΩÏóÖÍ∞Ä"
+                                        required><span class="custom-radio"></span><span class="radio-label">?àÎπÑ
+                                        Ï∞ΩÏóÖÍ∞Ä</span></label>
+                                <label class="radio-option"><input type="radio" name="status" value="Ï¥àÍ∏∞ Ï∞ΩÏóÖÍ∞Ä"><span
+                                        class="custom-radio"></span><span class="radio-label">Ï¥àÍ∏∞ Ï∞ΩÏóÖÍ∞Ä</span></label>
+                                <label class="radio-option"><input type="radio" name="status" value="n?ÑÏ∞® Ï∞ΩÏóÖÍ∞Ä"><span
+                                        class="custom-radio"></span><span class="radio-label">n?ÑÏ∞® Ï∞ΩÏóÖÍ∞Ä</span></label>
+                                <label class="radio-option">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; width: 100%;">
+                                        <input type="radio" name="status" value="Í∏∞Ì?"><span
+                                            class="custom-radio"></span><span class="radio-label">Í∏∞Ì?: </span>
+                                        <input type="text" name="statusEtc" class="inline-input" placeholder="ÏßÅÏ†ë ?ÖÎ†•">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="field">Ï∞ΩÏóÖ Î∂ÑÏïº</label>
+                            <input type="text" id="field" name="field" placeholder="Í¥Ä???àÍ±∞??ÏßÑÌñâ Ï§ëÏù∏ Ï∞ΩÏóÖ Î∂ÑÏïº" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Îß§Ï∂ú??Î∞úÏÉù?òÍ≥† ?àÎÇò?? (?†ÌÉù?¨Ìï≠)</label>
+                            <div class="radio-group-vertical">
+                                <label class="radio-option"><input type="radio" name="revenue" value="??><span
+                                        class="custom-radio"></span><span class="radio-label">??/span></label>
+                                <label class="radio-option"><input type="radio" name="revenue" value="?ÑÎãà??><span
+                                        class="custom-radio"></span><span class="radio-label">?ÑÎãà??/span></label>
+                                <label class="radio-option">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; width: 100%;">
+                                        <input type="radio" name="revenue" value="Í∏∞Ì?"><span
+                                            class="custom-radio"></span><span class="radio-label">Í∏∞Ì?: </span>
+                                        <input type="text" name="revenueEtc" class="inline-input" placeholder="ÏßÅÏ†ë ?ÖÎ†•">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Ïª§ÌîºÏ±?+ ?§Ìä∏?åÌÇπ ?ºÏ†ï ?†ÌÉù (??)</label>
+                            <div class="radio-group-vertical">
+                                <label class="radio-option"><input type="radio" name="coffeeChat" value="2/8 (?? ?§Ï†Ñ 11??
+                                        required><span class="custom-radio"></span><span class="radio-label">2/8 (?? ?§Ï†Ñ
+                                        11??/span></label>
+                                <label class="radio-option"><input type="radio" name="coffeeChat"
+                                        value="2/13 (Í∏? ?Ä??7??30Î∂?><span class="custom-radio"></span><span
+                                        class="radio-label">2/13 (Í∏? ?Ä??7??30Î∂?/span></label>
+                                <label class="radio-option"><input type="radio" name="coffeeChat"
+                                        value="2/15 (?? ?§Ï†Ñ 11??><span class="custom-radio"></span><span
+                                        class="radio-label">2/15 (?? ?§Ï†Ñ 11??/span></label>
+                                <label class="radio-option"><input type="radio" name="coffeeChat"
+                                        value="2/20 (Í∏? ?Ä??7??30Î∂?><span class="custom-radio"></span><span
+                                        class="radio-label">2/20 (Í∏? ?Ä??7??30Î∂?/span></label>
+                                <label class="radio-option"><input type="radio" name="coffeeChat"
+                                        value="2/22 (?? ?§Ï†Ñ 11??><span class="custom-radio"></span><span
+                                        class="radio-label">2/22 (?? ?§Ï†Ñ 11??/span></label>
+                                <label class="radio-option"><input type="radio" name="coffeeChat"
+                                        value="2/27 (Í∏? ?Ä??7??30Î∂?><span class="custom-radio"></span><span
+                                        class="radio-label">2/27 (Í∏? ?Ä??7??30Î∂?/span></label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="problem">?ÑÏû¨ Í∞Ä???µÎãµ??Í≥†Î?</label>
+                            <textarea id="problem" name="problem" placeholder="Í∞Ä???úÏõê?òÍ≤å ?¥Í≤∞?òÍ≥† ?∂Ï? Î∂ÄÎ∂ÑÏùÑ Íµ¨Ï≤¥?ÅÏúºÎ°??ÅÏñ¥Ï£ºÏÑ∏??
+                                required></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="agreement" required><span class="custom-checkbox"></span>
+                                <span class="checkbox-label" style="font-weight: 500;">Í∞úÏù∏?ïÎ≥¥?òÏßë?ôÏùò (?ÑÏàò)</span>
+                            </label>
+                        </div>
+                        <button type="submit" id="submitBtn" class="btn btn-primary submit-btn">
+                            <span class="btn-text">Ïª§ÌîºÏ±?& ?§Ìä∏?åÌÇπ Ï∞∏Ïó¨?òÍ∏∞</span>
+                            <div class="loader" style="display: none;"></div>
+                        </button>
+                    </form>
+                    <div id="successMessage" class="success-box" style="display: none;">
+                        <div class="success-icon">?•§</div>
+                        <h3>?†Ï≤≠???ÑÎ£å?òÏóà?µÎãà??</h3>
+                        <p>?¨Ïù¥???¥ÏòÅÏßÑÏù¥ Í≥??úÏõê??Ï∞∏Ïó¨ ?àÎÇ¥Î•??ÑÏ??úÎ¶¥Í≤åÏöî.</p>
+                        <button onclick="location.reload()" class="btn btn-secondary">Ï∂îÍ? ?†Ï≤≠?òÍ∏∞</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbygXc7H1UtuolhcjMhRA1VXzaxoh8Yz1rTKR7SOEwh-BuN3Lr6QbuARpA6i03qxkrE/exec';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('ciderForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const loader = document.querySelector('.loader');
+            const btnText = document.querySelector('.btn-text');
+
+            if (form) {
+                form.addEventListener('submit', e => {
+                    e.preventDefault();
+                    submitBtn.disabled = true;
+                    btnText.style.opacity = '0';
+                    loader.style.display = 'block';
+
+                    const formData = {
+                        ?¥Î¶Ñ: form.name.value,
+                        ?òÏù¥: form.age.value,
+                        ?∞ÎùΩÏ≤? form.phone.value,
+                        Ï∞ΩÏóÖ?ÑÌô©: form.status.value === 'Í∏∞Ì?' ? `Í∏∞Ì?(${form.statusEtc.value})` : form.status.value,
+                        Ï∞ΩÏóÖÎ∂ÑÏïº: form.field.value,
+                        Îß§Ï∂ú?¨Î?: form.revenue.value === 'Í∏∞Ì?' ? `Í∏∞Ì?(${form.revenueEtc.value})` : (form.revenue.value || 'ÎØ∏ÏÑ†??),
+                        Ïª§ÌîºÏ±óÏùº?? form.coffeeChat.value,
+                        Í≥†Î??¨Ìï≠: form.problem.value,
+                        timestamp: new Date().toLocaleString()
+                    };
+
+                    fetch(scriptURL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        cache: 'no-cache',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    })
+                        .then(() => {
+                            form.style.display = 'none';
+                            successMessage.style.display = 'block';
+                            successMessage.scrollIntoView({ behavior: 'smooth' });
+                        })
+                        .catch(error => {
+                            console.error('Error!', error.message);
+                            alert('?§Î•òÍ∞Ä Î∞úÏÉù?àÏäµ?àÎã§. ?§Ïãú ?úÎèÑ??Ï£ºÏÑ∏??');
+                            submitBtn.disabled = false;
+                            btnText.style.opacity = '1';
+                            loader.style.display = 'none';
+                        });
+                });
+            }
+        });
+
+        const mockUsers = ["?∞Îãà??Î∂ÑÏïº ???úÎãò", "AI¬∑?•ÌÖå??Î∂ÑÏïº Î∞?Ï§Ä??, "?êÎ??åÌÅ¨ Î∂ÑÏïº Ïµ??ÑÎãò", "?Ä?åÌÅ¨ ?úÎπÑ??ÍπÄ*?ÑÎãò"];
+        function showNotification() {
+            const toast = document.getElementById('notification-toast');
+            const userText = document.getElementById('toast-user');
+            userText.innerText = mockUsers[Math.floor(Math.random() * mockUsers.length)];
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 4000);
+        }
+        setInterval(showNotification, 13000);
+        setTimeout(showNotification, 3000);
+
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                item.classList.toggle('active');
+                q.querySelector('.faq-toggle').innerText = item.classList.contains('active') ? '-' : '+';
+            });
+        });
+
+        function updateTimer() {
+            const now = new Date();
+            const tomorrow = new Date();
+            tomorrow.setHours(24, 0, 0, 0);
+            let diff = tomorrow - now;
+            const h = Math.floor(diff / 3600000);
+            const m = Math.floor((diff / 60000) % 60);
+            const s = Math.floor((diff / 1000) % 60);
+            document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+        }
+        setInterval(updateTimer, 1000);
+        document.addEventListener('DOMContentLoaded', updateTimer);
+
+
+    </script>
+    <script>
+        function openApplicationModal() {
+            const modal = document.getElementById('application-modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeApplicationModal() {
+            const modal = document.getElementById('application-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    </script>

@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>우리는 창업하는 사이다 | 답답한 창업을 시원하게</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="bg-canvas">
+    <div class="orb-container">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="welcome-grid"></div>
+  </div>
+
+  <!-- [2] Main Page Content -->
+  <div id="main-landing-page" class="main-landing-page">
+    <!-- 실시간 알림 팝업 -->
+    <div id="notification-toast" class="notification-toast">
+      <div class="toast-content">
+        <span class="toast-icon">🥤</span>
+        <div class="toast-text">
+          <p id="toast-user">서울시 강남구 이*서님</p>
+          <span>방금 전 참여 신청 완료!</span>
+        </div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="container" style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+          ">
+        <a href="index.html" class="logo-link">
+          <div class="logo">
+            <div class="stars-container" style="margin-bottom: 0; gap: 2px">
+              <span class="star" style="font-size: 0.8rem">★</span>
+            </div>
+            <span class="brand-text">우.창.<span class="highlight">사</span></span>
+            <div class="fizz-container">
+              <span class="fizz"></span><span class="fizz"></span><span class="fizz"></span>
+            </div>
+          </div>
+        </a>
+        <div class="menu-toggle" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="nav-links">
+          <a href="about.html">About Us</a>
+          <a href="strengths.html">핵심 강점</a>
+          <a href="process.html">진행 방식</a>
+          <a href="#experts" class="nav-link-btn">전문가 라인업</a>
+        </div>
+        <a href="#" onclick="
+              openApplicationModal();
+              return false;
+            " class="btn btn-primary" style="
+              padding: 0.7rem 1.8rem;
+              font-size: 0.9rem;
+              border-radius: 12px;
+            ">지금 참여하기</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="container">
+        <h1 class="hero-brand-name">
+          우리는 창업하는 <span class="highlight-neon">사이다</span>
+        </h1>
+        <p class="hero-main-slogan">답답한 창업 고민, 사이다처럼 시원하게!</p>
+        <div class="cta-group">
+          <a href="#" onclick="
+                openApplicationModal();
+                return false;
+              " class="btn btn-primary">강연 참여 신청하기</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="experts" class="experts-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge" style="background: var(--glow-green); color: var(--primary)">Experts</span>
+          <h2>전문가 크루 <span class="highlight-neon">라인업</span></h2>
+          <p style="margin-top: 1rem; color: var(--text-muted)">
+            아이디어부터 Scale-up까지, 당신의 사업 고민을 함께 뚫어나갈 실전
+            전문가 크루입니다.
+          </p>
+        </div>
+        <div class="expert-slider-wrapper">
+          <div class="expert-slider-container">
+            <!-- Expert Card 1 -->
+            <div class="expert-card" onclick="location.href = 'expert_detail.html?id=lee-seong-ho'">
+              <div class="expert-image">
+                <img src="images/expert_lee.png" alt="이성호 회계사" />
+              </div>
+              <div class="expert-info">
+                <span class="expert-tag">Finance & Tax</span>
+                <h3>이성호 회계사</h3>
+                <p class="expert-headline">
+                  “기술과 숫자를 잇는 실전적 솔루션”
+                </p>
+                <ul class="expert-career">
+                  <li><strong>現 회계법인 마일스톤</strong> 파트너</li>
+                  <li><strong>Frm. PwC 삼일 / EY 한영</strong> 본부</li>
+                  <li><strong>SK하이닉스 / 삼성전자</strong> 감사 및 자문</li>
+                  <li><strong>재무 실사 및 ESG</strong> 전략 컨설팅</li>
+                  <li><strong>IT·제조·엔터</strong> 산업 전문 회계사</li>
+                </ul>
+              </div>
+            </div>
+            <!-- Expert Card 2 -->
+            <div class="expert-card" onclick="location.href = 'expert_detail.html?id=park-gyu-min'">
+              <div class="expert-image">
+                <img src="images/park_gyumin.jpg" alt="박규민 변리사" />
+              </div>
+              <div class="expert-info">
+                <span class="expert-tag">Patent & AI</span>
+                <h3>박규민 변리사</h3>
+                <p class="expert-headline">
+                  “기술의 탄생부터 비즈니스 전략까지 설계하는 파트너”
+                </p>
+                <ul class="expert-career">
+                  <li><strong>대인국제특허</strong> 대표 변리사</li>
+                  <li>
+                    <strong>AI·데이터 플랫폼</strong> IP 포트폴리오 구축
+                  </li>
+                  <li><strong>한빛지적재산권센터</strong> 특허법 강사</li>
+                  <li>
+                    <strong>스타트업 기술 자산</strong> 보호 및 IP 빌드업
+                  </li>
+                  <li><strong>연세대 공대 / 고려사이버대 AI</strong> 전공</li>
+                </ul>
+              </div>
+            </div>
+            <!-- Expert Card 3 -->
+            <div class="expert-card" onclick="location.href = 'expert_detail.html?id=lee-jeong-won'">
+              <div class="expert-image">
+                <img src="images/expert_lee_jw.png" alt="이정원 변호사" />
+              </div>
+              <div class="expert-info">
+                <span class="expert-tag">Corporate & IP</span>
+                <h3>이정원 변호사</h3>
+                <p class="expert-headline">“기업 성장의 법률 파트너”</p>
+                <ul class="expert-career">
+                  <li><strong>現 블루법률사무소</strong> 대표 변호사</li>
+                  <li><strong>現 CSIP컨설팅</strong> 대표 컨설턴트</li>
+                  <li><strong>연합뉴스 경제TV</strong> 매거진 출연 변호사</li>
+                  <li><strong>Frm. ㈜락앤락</strong> 법무팀 사내변호사</li>
+                  <li><strong>카이스트 지식재산(MIP)</strong> 석사</li>
+                </ul>
+              </div>
+            </div>
+            <!-- Expert Card 4 -->
+            <div class="expert-card" onclick="
+                  location.href = 'expert_detail.html?id=lee-chae-gyeong'
+                ">
+              <div class="expert-image chae-image">
+                <img src="images/expert_lee_chae.jpg" alt="이채경 노무사" />
+              </div>
+              <div class="expert-info">
+                <span class="expert-tag">HR & Labor Strategy</span>
+                <h3>이채경 노무사</h3>
+                <p class="expert-headline">“경영의 관점에서 노무를 봅니다”</p>
+                <ul class="expert-career">
+                  <li>
+                    <strong>現 채우리노동법률사무소</strong> 대표 공인노무사
+                  </li>
+                  <li>
+                    <strong>Hackers 인사노무·경영조직론</strong> 전임 강사
+                  </li>
+                  <li>
+                    <strong>300개 이상 사업장</strong> 노무 자문 및 아웃소싱
+                  </li>
+                  <li>
+                    <strong>직무 내 괴롭힘·성희롱</strong> 조사 및 분쟁 예방
+                  </li>
+                  <li>
+                    <strong>스타트업·성장기 기업</strong> 인사 체계 구축 전문
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Buttons & Dots -->
+          <div class="slider-nav-group">
+            <button class="slider-nav-btn prev" aria-label="이전 전문가">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="slider-nav-btn next" aria-label="다음 전문가">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+          <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge" style="background: var(--glow-green); color: var(--primary)">FAQ</span>
+          <h2>가장 많이 물어보시는 질문</h2>
+        </div>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Q. 예비 창업가만 참여할 수 있나요?</span><span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                아니요, 아이디어 단계의 예비 창업가부터 이미 비즈니스를 이끌고
+                계신 모든 창업가분들을 위한 네트워킹입니다. 비즈니스 성장의
+                모든 단계를 아우르는 실전 전문가들이 함께합니다.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Q. 프로그램은 어떻게 진행되나요?</span><span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                각 분야 최고 전문가들의 실무 강연과 참가자 간의 긴밀한
+                네트워킹으로 구성됩니다. 일방적인 지식 전달을 넘어 전문가와
+                창업가들이 직접 고민을 나누는 소통의 시간으로 진행됩니다.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Q. 진행 장소는 어디인가요?</span><span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                서울 강남구 프라이빗 공간에서 진행됩니다. 상세 장소는
+                신청자분들께 개별 안내드립니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="text-align: center">
+        <p style="opacity: 0.5; font-size: 0.85rem">
+          &copy; 2026 우리는 창업하는 사이다. All rights reserved.
+        </p>
+        <a href="https://cpa4u.kr/privacy-policy/" target="_blank" class="footer-link">개인정보처리방침</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Application Modal -->
+  <div id="application-modal" class="modal-overlay" onclick="if (event.target === this) closeApplicationModal();">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeApplicationModal()">
+        &times;
+      </button>
+      <div class="form-container">
+        <div class="section-header modal-header-compact">
+          <span class="badge" style="
+                background: var(--glow-green);
+                color: var(--primary);
+                margin-bottom: 0.5rem;
+              ">네트워킹 밋업</span>
+          <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem">
+            스타트업 전문가들과 함께하는<br />네트워크 밋업
+          </h2>
+          <div class="timer-container" style="margin-bottom: 0.5rem">
+            <p style="font-size: 0.9rem">🔥 오늘 혜택 마감까지</p>
+            <div id="countdown" class="countdown-timer">
+              <div class="time-unit">
+                <span id="hours">00</span><label>시간</label>
+              </div>
+              <span class="sep">:</span>
+              <div class="time-unit">
+                <span id="minutes">00</span><label>분</label>
+              </div>
+              <span class="sep">:</span>
+              <div class="time-unit">
+                <span id="seconds">00</span><label>초</label>
+              </div>
+            </div>
+          </div>
+          <div class="status-badge-group" style="margin: 0.5rem 0">
+            <div class="status-badge-item urgent">
+              <span class="pulse-dot"></span>선착순 마감 직전
+            </div>
+            <div class="status-badge-item warning">
+              <span class="pulse-dot"></span>조기 마감 임박
+            </div>
+          </div>
+        </div>
+
+        <div class="custom-form-container">
+          <form id="ciderForm" class="cider-premium-form">
+            <div class="form-row">
+              <div class="input-group">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" placeholder="성함을 입력해 주세요" required />
+              </div>
+              <div class="input-group">
+                <label for="age">나이</label>
+                <input type="number" id="age" name="age" placeholder="만 나이를 입력해 주세요" required />
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="phone">연락처</label>
+              <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required />
+            </div>
+            <div class="input-group">
+              <label>창업현황</label>
+              <div class="radio-group-vertical">
+                <label class="radio-option"><input type="radio" name="status" value="예비 창업가" required /><span
+                    class="custom-radio"></span><span class="radio-label">예비 창업가</span></label>
+                <label class="radio-option"><input type="radio" name="status" value="초기 창업가" /><span
+                    class="custom-radio"></span><span class="radio-label">초기 창업가</span></label>
+                <label class="radio-option"><input type="radio" name="status" value="n년차 창업가" /><span
+                    class="custom-radio"></span><span class="radio-label">n년차 창업가</span></label>
+                <label class="radio-option">
+                  <div style="
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        width: 100%;
+                      ">
+                    <input type="radio" name="status" value="기타" /><span class="custom-radio"></span><span
+                      class="radio-label">기타: </span>
+                    <input type="text" name="statusEtc" class="inline-input" placeholder="직접 입력" />
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="field">창업 분야</label>
+              <input type="text" id="field" name="field" placeholder="관심 있거나 진행 중인 창업 분야" required />
+            </div>
+            <div class="input-group">
+              <label>매출여부</label>
+              <div class="radio-group-vertical">
+                <label class="radio-option"><input type="radio" name="revenue" value="네" /><span
+                    class="custom-radio"></span><span class="radio-label">네</span></label>
+                <label class="radio-option"><input type="radio" name="revenue" value="아니요" /><span
+                    class="custom-radio"></span><span class="radio-label">아니요</span></label>
+                <label class="radio-option">
+                  <div style="
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        width: 100%;
+                      ">
+                    <input type="radio" name="revenue" value="기타" /><span class="custom-radio"></span><span
+                      class="radio-label">기타: </span>
+                    <input type="text" name="revenueEtc" class="inline-input" placeholder="직접 입력" />
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="coffeeChat">참여 행사 일자 선택</label>
+              <input type="datetime-local" id="coffeeChat" name="coffeeChat" required />
+            </div>
+            <div class="input-group">
+              <label for="problem">현재 가장 답답한 고민</label>
+              <textarea id="problem" name="problem" placeholder="가장 시원하게 해결하고 싶은 부분을 구체적으로 적어주세요" required></textarea>
+            </div>
+            <div class="input-group" style="margin-top: 0.5rem">
+              <label class="checkbox-option">
+                <input type="checkbox" name="privacyConsent" required />
+                <span class="custom-checkbox"></span>
+                <span class="checkbox-label" style="font-size: 0.85rem">[필수] 개인정보 수집 및 이용에 동의합니다.</span>
+              </label>
+              <p style="
+                    font-size: 0.75rem;
+                    color: rgba(255, 255, 255, 0.4);
+                    margin-left: 2.2rem;
+                    line-height: 1.4;
+                  ">
+                * 수집항목: 이름, 나이, 연락처, 창업현황 및 분야, 매출여부,
+                고민사항<br />
+                * 이용목적: 강연 및 밋업 안내, 상담 진행
+              </p>
+            </div>
+            <button type="submit" id="submitBtn" class="btn btn-primary submit-btn">
+              <span class="btn-text">참여 신청하기</span>
+              <div class="loader" style="display: none"></div>
+            </button>
+          </form>
+          <div id="successMessage" class="success-box" style="display: none">
+            <div class="success-icon">🥤</div>
+            <h3>신청 완료!</h3>
+            <p>운영진이 곧 연락드리겠습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Mobile CTA -->
+  <div class="mobile-cta-floating">
+    <a href="#" onclick="
+          openApplicationModal();
+          return false;
+        " class="btn btn-primary cta-floating-btn">지금 무료 참여하기</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
