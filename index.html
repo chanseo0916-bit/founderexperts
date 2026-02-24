@@ -10,6 +10,21 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
   <link rel="stylesheet" href="style.css" />
+  <script>
+    // 이미지 로드 실패 시 자동 복구 스크립트
+    document.addEventListener('error', function (e) {
+      if (e.target.tagName.toLowerCase() === 'img') {
+        const currentSrc = e.target.getAttribute('src');
+        if (currentSrc && currentSrc.startsWith('images/')) {
+          const fallbackSrc = currentSrc.replace('images/', '');
+          if (e.target.dataset.triedFallback !== 'true') {
+            e.target.dataset.triedFallback = 'true';
+            e.target.src = fallbackSrc;
+          }
+        }
+      }
+    }, true);
+  </script>
 </head>
 
 <body>
@@ -105,7 +120,7 @@
             <!-- Expert Card 1 -->
             <div class="expert-card" onclick="location.href = 'expert_detail.html?id=lee-seong-ho'">
               <div class="expert-image">
-                <img src="images/expert_lee.png" alt="이성호 회계사" />
+                <img src="expert_lee.png" alt="이성호 회계사" />
               </div>
               <div class="expert-info">
                 <span class="expert-tag">Finance & Tax</span>
@@ -125,7 +140,7 @@
             <!-- Expert Card 2 -->
             <div class="expert-card" onclick="location.href = 'expert_detail.html?id=park-gyu-min'">
               <div class="expert-image">
-                <img src="images/park_gyumin.jpg" alt="박규민 변리사" />
+                <img src="park_gyumin.jpg" alt="박규민 변리사" />
               </div>
               <div class="expert-info">
                 <span class="expert-tag">Patent & AI</span>
@@ -149,7 +164,7 @@
             <!-- Expert Card 3 -->
             <div class="expert-card" onclick="location.href = 'expert_detail.html?id=lee-jeong-won'">
               <div class="expert-image">
-                <img src="images/expert_lee_jw.png" alt="이정원 변호사" />
+                <img src="expert_lee_jw.png" alt="이정원 변호사" />
               </div>
               <div class="expert-info">
                 <span class="expert-tag">Corporate & IP</span>
@@ -169,7 +184,7 @@
                   location.href = 'expert_detail.html?id=lee-chae-gyeong'
                 ">
               <div class="expert-image chae-image">
-                <img src="images/expert_lee_chae.jpg" alt="이채경 노무사" />
+                <img src="expert_lee_chae.jpg" alt="이채경 노무사" />
               </div>
               <div class="expert-info">
                 <span class="expert-tag">HR & Labor Strategy</span>
