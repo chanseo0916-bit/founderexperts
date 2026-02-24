@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg-color: #0f172a;
   --primary: #008248;
   --primary-dark: #005c32;
@@ -1318,10 +1318,35 @@ footer .logo span {
 
 @media (max-width: 640px) {
   .notification-toast {
-    left: 1rem;
-    right: 1rem;
-    bottom: 1rem;
-    width: auto;
+    top: auto !important;
+    /* 상단 고정 해제 */
+    bottom: 1.5rem !important;
+    /* 하단으로 이동 */
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+    padding: 0.7rem 1rem !important;
+    transform: translateY(150%) !important;
+  }
+
+  .notification-toast.show {
+    transform: translateY(0) !important;
+  }
+
+  .toast-content {
+    gap: 0.5rem !important;
+  }
+
+  .toast-icon {
+    font-size: 1.1rem !important;
+  }
+
+  .toast-text p {
+    font-size: 0.8rem !important;
+  }
+
+  .toast-text span {
+    font-size: 0.7rem !important;
   }
 }
 
@@ -2091,8 +2116,32 @@ footer .logo span {
   .process-card,
   .logic-item,
   .phi-card {
-    padding: 2rem !important;
-    border-radius: 24px !important;
+    padding: 1.5rem !important;
+    /* 패딩 대폭 축소 */
+    border-radius: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .process-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    padding: 0 !important;
+  }
+
+  .process-card h3 {
+    font-size: 1.4rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .process-desc {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .process-info li {
+    font-size: 0.85rem !important;
   }
 
   h1 {
